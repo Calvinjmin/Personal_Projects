@@ -1,7 +1,7 @@
-calvin = []
-mitch = []
-josh = []
-mike = []
+person_a = []
+person_c = []
+person_b = []
+person_d = []
 
 def main():
     while True:
@@ -38,43 +38,43 @@ def main():
 
 def addItem( p, price, item) :
     if p == 'e':
-        calvin.append(price)
-        josh.append(price)
-        mitch.append(price)
-        mike.append(price)
+        person_a.append(price)
+        person_b.append(price)
+        person_c.append(price)
+        person_d.append(price)
     elif p == "c" or p == 'cal':
-        print( "Calvin - " + item + "\nAmount - " + str(price))
-        calvin.append( price)
-    elif p == 'j' or  p == "josh":
-        print( "Josh - " + item + "\nAmount - " + str(price))
-        josh.append( price)
-    elif p == 'mh' or p == "mitch":
-        print( "Mitch - " + item + "\nAmount - " + str(price))
-        mitch.append( price )
-    elif p == 'mb' or p == "mike":
-        print( "Mike - " + item + "\nAmount - " + str(price))
-        mike.append( price )
+        print( "person_a - " + item + "\nAmount - " + str(price))
+        person_a.append( price)
+    elif p == 'j' or  p == "person_b":
+        print( "person_b - " + item + "\nAmount - " + str(price))
+        person_b.append( price)
+    elif p == 'mh' or p == "person_c":
+        print( "person_c - " + item + "\nAmount - " + str(price))
+        person_c.append( price )
+    elif p == 'mb' or p == "person_d":
+        print( "person_d - " + item + "\nAmount - " + str(price))
+        person_d.append( price )
 
 def printItems():
     val = 0.00
-    for x in calvin:
+    for x in person_a:
         val += x
-    print( "Calvin pays " + str(round(val,2)) )
+    print( "person_a pays " + str(round(val,2)) )
 
     val = 0.00
-    for x in josh:
+    for x in person_b:
         val += x
-    print( "Josh pays " + str(round(val,2)) )
+    print( "person_b pays " + str(round(val,2)) )
 
     val = 0.00
-    for x in mitch:
+    for x in person_c:
         val += x
-    print( "Mitch pays " + str(round(val,2)) )
+    print( "person_c pays " + str(round(val,2)) )
 
     val = 0.00
-    for x in mike:
+    for x in person_d:
         val += x
-    print( "Mike pays " + str(round(val,2)) )
+    print( "person_d pays " + str(round(val,2)) )
 
 if __name__ == "__main__":
     main()
