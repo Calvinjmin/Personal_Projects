@@ -4,12 +4,9 @@ person_b = []
 person_d = []
 
 def main():
-    while True:
-        end = input("Do you have any more items left to add? ")
-        if end == "n":
-            break
-
-        item = input("Item: ")
+    itemNum = int(input("How many items did you buy? "))
+    for iter in range(itemNum):
+        item = input("Name of Item: ")
         price = float(input("Price: "))
         people = input("Who bought it? ")
         peopleA = people.split(",")
@@ -27,52 +24,68 @@ def main():
             for x in range(numPeople):
                 while True:
                     personPer = input("Who? ")
-                    per = float(input( "Percentage of " + personPer + " "))
+                    per = float(input( "Percentage of " + personPer + " (Write in Decimal Format) "))
                     if ( totalPer + per > 1.0 ):
                         print("Invalid percentage.. Try Again!")
                     else:
                         addItem( personPer, round(price * per,2), item )
                         totalPer += per
                         break
-    printItems()
+        printIndvList()
+    printFinalPay()
 
 def addItem( p, price, item) :
+    itemL = [item,price]
     if p == 'e':
-        person_a.append(price)
-        person_b.append(price)
-        person_c.append(price)
-        person_d.append(price)
-    elif p == "c" or p == 'cal':
-        print( "person_a - " + item + "\nAmount - " + str(price))
-        person_a.append( price)
-    elif p == 'j' or  p == "person_b":
-        print( "person_b - " + item + "\nAmount - " + str(price))
-        person_b.append( price)
-    elif p == 'mh' or p == "person_c":
-        print( "person_c - " + item + "\nAmount - " + str(price))
-        person_c.append( price )
-    elif p == 'mb' or p == "person_d":
-        print( "person_d - " + item + "\nAmount - " + str(price))
-        person_d.append( price )
+        person_a.append(itemL)
+        person_b.append(itemL)
+        person_c.append(itemL)
+        person_d.append(itemL)
+    elif p == 'cal':
+        person_a.append(itemL)
+    elif p == "person_b":
+        person_b.append(itemL)
+    elif p == "person_c":
+        person_c.append(itemL)
+    elif p == "person_d":
+        person_d.append(itemL)
 
-def printItems():
+def printIndvList():
+    print("\nperson_a's List: ")
+    for (item, x) in person_a:
+        print( item + ": " + str(round(x,2) ))
+
+    print("\nperson_b's List: ")
+    for (item,x) in person_b:
+        print( item + ": " + str(round(x,2) ))
+
+    print("\nperson_cell's List: ")
+    for (item,x) in person_c:
+        print( item + ": " + str(round(x,2) ))
+
+    print("\nperson_d's List: ")
+    for (item,x) in person_d:
+        print( item + ": " + str(round(x,2) ))
+
+def printFinalPay():
+    print("\n\n---Final Payments---")
     val = 0.00
-    for x in person_a:
+    for (item, x) in person_a:
         val += x
-    print( "person_a pays " + str(round(val,2)) )
+    print("person_a pays " + str(round(val,2)) )
 
     val = 0.00
-    for x in person_b:
+    for (item,x) in person_b:
         val += x
     print( "person_b pays " + str(round(val,2)) )
 
     val = 0.00
-    for x in person_c:
+    for (item,x) in person_c:
         val += x
     print( "person_c pays " + str(round(val,2)) )
 
     val = 0.00
-    for x in person_d:
+    for (item,x) in person_d:
         val += x
     print( "person_d pays " + str(round(val,2)) )
 
